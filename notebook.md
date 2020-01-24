@@ -7,6 +7,9 @@ the last activities first (e.g. in reverse cronological order by week)
 
 * :+1: Attended lecture
 
-# Week Fri 1/19/20 - 13/25/20
+# Week Fri 1/19/20 - 1/25/20
 
+* Installed and tested Multipass
+* Installed Python 3.8
+* Set up venv
 
