@@ -9,7 +9,8 @@ the last activities first (e.g. in reverse cronological order by week)
 
 # Week Fri 1/19/20 - 1/25/20
 
+* Setup ssh key for github
 * Installed and tested Multipass
-* Installed Python 3.8
 * Set up venv
+* Installed Python 3.8
 
