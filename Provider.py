@@ -6,77 +6,65 @@ class Provider:
     def __init__(self, name):
         self.name = name
 
-    def delete(self):
-        os.system("multipass delete")
+    def delete(self, name):
+        os.system(f"multipass delete -p {name}") #don't need to call purge after since we use the p flag
         
-    def exec(self):
-        os.system("multipass exec")
-        
-    def find(self):
+    def images(self):
         os.system("multipass find")
         
-    def get(self):
-        os.system("multipass get")
+    def get(self, key):
+        os.system(f"multipass get {key}")
         
-    def help(self):
-        os.system("multipass help")
+    def help(self, command=""):
+        os.system(f"multipass help {command}")
         
-    def info(self):
-        os.system("multipass info")
+    def info(self, instance):
+        os.system(f"multipass info {instance}")
         
-    def launch(self):
-        os.system("multipass launch")
+    def launch(self, image):
+        os.system(f"multipass launch {image}")
         
     def list(self):
         os.system("multipass list")
         
-    def mount(self):
-        os.system("multipass mount")
+    def mount(self, source, target):
+        os.system(f"multipass mount {source} {target}")
         
     def purge(self):
         os.system("multipass purge")
         
-    def recover(self):
-        os.system("multipass recover")
+    def recover(self, name):
+        os.system(f"multipass recover {name}")
         
-    def restart(self):
-        os.system("multipass restart")
+    def restart(self, name=""):
+        os.system(f"multipass restart {name}")
         
-    def set(self):
-        os.system("multipass set")
+    def set(self, key, value):
+        os.system(f"multipass set {key}={value}")
         
-    def shell(self):
-        os.system("multipass shell")
+    def shell(self, instance=""):
+        os.system(f"multipass shell {instance}")
         
-    def start(self):
-        os.system("multipass start")
+    def start(self, instance=""):
+        os.system(f"multipass start {instance}")
         
-    def stop(self):
-        os.system("multipass stop")
+    def stop(self, name):
+        os.system(f"multipass stop {name}")
         
-    def suspend(self):
-        os.system("multipass suspend")
+    def suspend(self, name):
+        os.system(f"multipass suspend {name}")
         
-    def transfer(self):
-        os.system("multipass transfer")
+    def transfer(self, source, dest):
+        os.system(f"multipass transfer {source} {dest}")
         
-    def umount(self):
-        os.system("multipass umount")
+    def umount(self, instance):
+        os.system(f"multipass umount {instance}")
         
     def version(self):
         os.system("multipass version")
-
-    # def list(self):
-    #     os.system("multipass find")
-
-    # def shell(self):
-    #     print(f"shell {self.name}")
-    #     #os.system("multipass shell")
-
-    # def run(self, command):
-    #     print (f"run {command}")
-    #     #os.system(f"multipass exec {command}")
-
+            
+    def run(self, command):
+        os.system(f"multipass exec {command}")
         
 if __name__ == "__main__":
     p = Provider("cloudmesh")

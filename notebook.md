@@ -1,16 +1,16 @@
-You will add to your notebook in bullet form for each week what you have done. 
-Please make sure you update it every week even if you have no time to work on 
-anything. You can surely spend 2 minutes to update this document. Please put 
-the last activities first (e.g. in reverse cronological order by week)
+# Notebook Josh Baker sp20-516-245
 
-# Week Fri 1/12/20 - 1/18/20
+## Week 1/19/20 - 1/25/20
+
+* Installed Python 3.8
+* Set up venv
+* Setup ssh key for github
+* Installed and tested Multipass
+* Wrote script to generate Provider class skeleton
+* Filled in Provider class
+
+## Week 1/12/20 - 1/18/20
 
 * :+1: Attended lecture
 
-# Week Fri 1/19/20 - 1/25/20
-
-* Setup ssh key for github
-* Installed and tested Multipass
-* Set up venv
-* Installed Python 3.8
 
