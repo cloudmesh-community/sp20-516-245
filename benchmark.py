@@ -1,4 +1,5 @@
 import os
+import inspect
 
 from pprint import pprint
 from time import sleep
@@ -14,74 +15,44 @@ from cloudmesh.configuration.Config import Config
 from cloudmesh.management.configuration.name import Name
 from cloudmesh.mongo.CmDatabase import CmDatabase
 
-Benchmark.debug()
 
-user = Config()["cloudmesh.profile.user"]
-#variables = Variables()
-#VERBOSE(variables.dict())
+def get_providers():
+    clouds = ["google", "azure"] # Provider.get_kind()
+    providers = []
+    for cloud in clouds:
+        try:
+            p = Provider(name=cloud)
+            providers.append(p) 
+        except Exception as e:
+            #print(e)
+            #print("error getting cloud provider for : {}".format(cloud))
+            continue
+    return providers
 
-#key = variables['key']
+#TODO take in function for ensuring command has proper result
+def test_function(provider, function):
+    test_name = f"test_{function.__name__}"
 
-#cloud = variables.parameter('cloud')
-
-# print(f"Test run for {cloud}")
-
-
-clouds = ["google", "azure"] # TODO get real list
-#clouds = Provider.get_kind()
-print(clouds)
-providers = []
-for cloud in clouds:
-    try:
-        p = Provider(name=cloud)
-        providers.append(p) 
-    except Exception as e:
-        #print(e)
-        #print("error getting cloud provider for : {}".format(cloud))
-        continue
-    
-def test_list(provider):
-    #Benchmark.Start()
-    StopWatch.start("test_list") 
-    data = provider.list()
-    StopWatch.stop("test_list")
+    StopWatch.start(test_name) 
+    data = function() #TODO allow inputs from kwargs too
+    StopWatch.stop(test_name)
     results = StopWatch.__str__()
     results = f"{provider.name} {results}"
     return results
 
-def test_flavors(provider):
-    StopWatch.start("test_flavors") 
-    data = provider.flavors()
-    StopWatch.stop("test_flavors")
-    results = StopWatch.__str__()
-    results = f"{provider.name} {results}"
-    return results
+def main():
+    times = []
+    function_names = ["list", "images", "flavors", "stop", "start", "boot", "ping", "terminate", "delete", "status", "ip", "ssh"]
+    for provider in providers:
+        for fname in function_names:
+            func = getattr(p, fname)
+            times.append(test_function(provider, func))
 
-def test_images(provider):
-    StopWatch.start("test_images") 
-    data = provider.images()
-    StopWatch.stop("test_images")
-    results = StopWatch.__str__()
-    results = f"{provider.name} {results}"
-    return results
+    #TODO process data and write to file
+    # "{provider} {label} {start} {end} {elapsed} {status} {newline}"
 
-def test_create(provider):
-    StopWatch.start("test_create") 
-    data = provider.start()
-    StopWatch.stop("test_create")
-    results = StopWatch.__str__()
-    results = f"{provider.name} {results}"
-    return results
+if __name__ == '__main__':
+    Benchmark.debug()
+    #user = Config()["cloudmesh.profile.user"]
 
-# Need to confirm command gives the proper output before returning timing result
-# stop, start, boot, ping, terminate, delete, status, ip, ssh, 
-
-#TODO process data and write to file
-# "{label} {start} {end} {elapsed} {status} {newline}"
-times = []
-for p in providers:
-    times.append(test_list(p))
-    times.append(test_flavors(p))
-    times.append(test_images(p))
-
-print(times)
+    main()
