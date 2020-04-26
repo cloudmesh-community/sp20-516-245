@@ -1,0 +1,1 @@
+{'google': {'create': 'google True test_create 1587929289.9792976 1587929307.467333 17 None \ncreate vm test-josh-vm-17 1587929290.0162153 1587929299.6678412 10 None \n'}, 'azure': {'create': 'azure True test_create 1587929308.1667006 1587929476.1299624 168 None \ncreate vm test-josh-vm-17 1587929308.2099214 1587929475.0237942 167 None \n'}}
