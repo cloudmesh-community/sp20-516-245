@@ -1,4 +1,3 @@
-
 # Compute Benchmark Project 
 
 This project focused on applying to multiple cloud providers, updating documentation of registration and usage, and providing benchmark data for all of those clouds. It provides an important comparison of the current functionality and relative speed of multiple different cloud providers. 
