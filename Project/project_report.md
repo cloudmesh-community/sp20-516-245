@@ -20,4 +20,5 @@ Some minor bug fixes needed to be applied (mostly done by others) so benchmarks 
 
 General information was added about running the benchmark tests, and about specific issues that might be encountered in [various clouds](https://github.com/cloudmesh/cloudmesh-cloud/blob/master/tests/cloud/README.rst).
 
-The log files, provider csv files, and overall benchmark totals are provided [here] (https://github.com/cloudmesh/cloudmesh-cloud/pull/349)
+The log files, provider csv files, and overall benchmark totals are provided 
+[here](https://github.com/cloudmesh/cloudmesh-cloud/pull/349)
